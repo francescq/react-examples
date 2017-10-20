@@ -1,17 +1,13 @@
 import React from 'react';
 
-const Counter = ({step, value, onChange}) => {
-
-    let applyOffset = (inc) => {
-        onChange(inc);
-    };
+const Counter = ({step, value, onChange, onRemove}) => {
 
     let inc = () => {
-        applyOffset(step);
+        onChange(step);
     };
 
     let dec = () => {
-        applyOffset(-step);
+        onChange(-step);
     };
 
     return <div>
@@ -20,6 +16,7 @@ const Counter = ({step, value, onChange}) => {
         </h1>
         <button onClick={inc}>+{step}</button>
         <button onClick={dec}>-{step}</button>
+        <button onClick={onRemove}>Remove</button>
     </div>
 };
 export default Counter;
