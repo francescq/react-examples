@@ -1,0 +1,33 @@
+{
+  "name": "test",
+  "private": true,
+  "version": "0.0.1",
+  "description": "test",
+  "main": "./build/umd/umd.js",
+  "react-scv": {
+    "appBuildEntry": "src/app.js",
+    "umdBuildEntry": "src/module/index.js",
+    "html": {
+      "title": "test",
+      "description": "test"
+    },
+    "devServer": {
+      "port": "4000"
+    }
+  },
+  "scripts": {
+    "build": "react-scv build",
+    "start": "react-scv start",
+    "test": "react-scv test",
+    "postinstall": "react-scv dll"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "react-scv": "0.0.4"
+  },
+  "dependencies": {
+    "react": "15.4.2",
+    "react-addons-test-utils": "15.4.2",
+    "react-dom": "15.4.2"
+  }
+}
