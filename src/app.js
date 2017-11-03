@@ -13,7 +13,7 @@ const render = Counter => {
     </AppContainer>,
     document.getElementById('root')
   )
-}
+};
 
 render(Root);
 

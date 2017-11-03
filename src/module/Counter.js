@@ -1,23 +1,35 @@
 import React from 'react';
 
-const Counter = ({step, value, onChange, onRemove}) => {
+const Counter = React.createClass({
 
-    let inc = () => {
-        onChange(step);
-    };
+    render() {
+        console.log('jai');
 
-    let dec = () => {
-        onChange(-step);
-    };
+        const {value,onRemove, step} = this.props;
 
-    return <div>
-        <h1>
-            Count: {value}
-        </h1>
-        <button onClick={inc}>+{step}</button>
-        <button onClick={dec}>-{step}</button>
-        <button onClick={onRemove}>Remove</button>
-    </div>
-};
+        return <div>
+            <h1>
+                Count: {value}
+            </h1>
+            <button onClick={this.inc}>+{step}</button>
+            <button onClick={this.dec}>-{step}</button>
+            <button onClick={onRemove}>Remove</button>
+        </div>
+    },
+
+    inc() {
+        this.props.onChange(this.props.step);
+    },
+
+    dec() {
+        this.props.onChange(-this.props.step);
+    },
+
+    shouldComponentUpdate(nextProps) {
+        return this.props.value !== nextProps.value;
+    }
+
+
+});
 export default Counter;
 

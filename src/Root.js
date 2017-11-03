@@ -20,32 +20,36 @@ const Root = React.createClass({
         </div>
     },
 
-    _onRemoveCounter(index) {
+    _onRemoveCounter(itemToRemove) {
         return () => {
-            this.state.counters.splice(index, 1);
-            this._setState(this.state.counters);
+            this.setState({
+                counters: this.state.counters.filter((counter, k) => k !== itemToRemove)
+            })
+
+            // let newCounters = this.state.counters.slice();
+            //
+            // newCounters.splice(index, 1);
+            //
+            // this.setState({counters: newCounters});
         }
     },
 
     _addCounter() {
-        this.state.counters.push(0);
-        this._setState(this.state.counters);
+        this.setState({counters:[...this.state.counters, 0]});
     },
 
     _applyOffset(index) {
         return (inc) => {
             let newCounters = this.state.counters.slice();
             newCounters[index] += inc;
-            this._setState(newCounters);
+            this.setState({counters: newCounters});
         };
     },
 
     _applyOffsetAll(inc) {
-        this._setState(this.state.counters.map(v => v + inc));
-    },
-
-    _setState(counters) {
-        this.setState({counters});
+        let newCounters = this.state.counters.slice();
+        newCounters = newCounters.map(v => v + inc);
+        this.setState({counters: newCounters});
     }
 
 });
